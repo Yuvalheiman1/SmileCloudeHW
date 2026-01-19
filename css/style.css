@@ -264,7 +264,6 @@ canvas:active {
 .ruler-tick {
     pointer-events: none;
 }
-}
 
 .instructions p {
     margin: 5px 0;
