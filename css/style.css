@@ -91,9 +91,111 @@ button:disabled {
     cursor: not-allowed;
 }
 
-canvas {
-    display: block;
+/* Display page styles */
+.canvas-container {
+    position: relative;
+    display: inline-block;
     margin: 20px auto;
+}
+
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    position: relative;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.ruler {
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 10px;
+    font-family: monospace;
+    position: absolute;
+    overflow: hidden;
+}
+
+.ruler-horizontal {
+    height: 30px;
+    width: 800px;
+    top: 0;
+    left: 40px;
     border: 1px solid #ddd;
+    border-bottom: 2px solid #999;
+}
+
+.ruler-vertical {
+    width: 40px;
+    height: 800px;
+    left: 0;
+    top: 30px;
+    border: 1px solid #ddd;
+    border-right: 2px solid #999;
+    writing-mode: vertical-lr;
+}
+
+.ruler-mark {
+    position: absolute;
+    white-space: nowrap;
+}
+
+.ruler-tick {
+    position: absolute;
+    background-color: #999;
+}
+
+canvas {
+    cursor: grab;
     background-color: white;
+}
+
+canvas:active {
+    cursor: grabbing;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-btn:hover {
+    background-color: #1976D2;
+}
+
+.control-btn.back-btn {
+    background-color: #4CAF50;
+}
+
+.control-btn.back-btn:hover {
+    background-color: #45a049;
+}
+
+.instructions {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.instructions p {
+    margin: 5px 0;
 }
