@@ -116,7 +116,9 @@ button:hover:not(:disabled) {
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(33, 150, 243, 0.3);
 }
-b0bec5;
+
+button:disabled {
+    background-color: #b0bec5;
     cursor: not-allowed;
     transform: none;
 }
@@ -137,8 +139,6 @@ b0bec5;
     position: relative;
     display: inline-block;
     margin: 0 auto;
-    padding-left: 40px; /* space for vertical ruler */
-    padding-top: 30px;  /* space for horizontal ruler */
     box-shadow: 0 4px 20px rgba(33, 150, 243, 0.15);
     border-radius: 8px;
     overflow: visible;
@@ -152,7 +152,8 @@ b0bec5;
     border-radius: 8px;
     background-color: #fafafa;
     position: relative;
-    margin: 0; /* flush inside container; padding on container makes room for rulers */
+    margin-left: 40px;
+    margin-top: 30px;
 }
 
 .ruler {
@@ -162,6 +163,7 @@ b0bec5;
     font-family: 'Courier New', monospace;
     position: absolute;
     overflow: hidden;
+    pointer-events: none; /* allow pan/zoom over rulers */
 }
 
 .ruler-horizontal {
@@ -169,15 +171,16 @@ b0bec5;
     width: 800px;
     top: 0;
     left: 40px;
-    border: 1px solid #90caf9;
     border-bottom: 2px solid #64b5f6;
 }
 
 .ruler-vertical {
     width: 40px;
-    height: 700px;
+    height: 800px;
     left: 0;
-    top: 30px;64b5f6;
+    top: 30px;
+    border-right: 2px solid #64b5f6;
+    writing-mode: vertical-lr;
 }
 
 canvas {
@@ -245,18 +248,22 @@ canvas:active {
 
 .instructions p {
     margin: 5px 0;
-    font-weight: 50olor: #4CAF50;
+    font-weight: 500;
 }
 
-.control-btn.back-btn:hover {
-    background-color: #45a049;
+/* ruler interaction overrides */
+.ruler-mark {
+    position: absolute;
+    white-space: nowrap;
+    color: #1976d2;
+    font-size: 10px;
+    font-weight: 500;
+    pointer-events: none;
 }
 
-.instructions {
-    text-align: center;
-    color: #666;
-    font-size: 14px;
-    margin-top: 10px;
+.ruler-tick {
+    pointer-events: none;
+}
 }
 
 .instructions p {
