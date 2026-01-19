@@ -254,8 +254,23 @@ function drawAngleArc(ctx, vertex, p1, p2, angle, scale) {
     const arcRadius = 30;
     
     // Calculate start and end angles for the arc
-    const startAngle = vectorAngle(vertex, p1);
-    const endAngle = vectorAngle(vertex, p2);
+    let startAngle = vectorAngle(vertex, p1);
+    let endAngle = vectorAngle(vertex, p2);
+
+    // Normalize angles to ensure we draw the interior angle
+    let angleDiff = endAngle - startAngle;
+    
+    // Adjust to always use the smaller angle (interior angle)
+    if (angleDiff > Math.PI) {
+        startAngle += 2 * Math.PI;
+    } else if (angleDiff < -Math.PI) {
+        endAngle += 2 * Math.PI;
+    }
+    
+    // If the angle difference is still going the wrong way, swap
+    if (endAngle < startAngle) {
+        [startAngle, endAngle] = [endAngle, startAngle];
+    }
 
     ctx.beginPath();
     ctx.arc(vertex.x, vertex.y, arcRadius, startAngle, endAngle);
