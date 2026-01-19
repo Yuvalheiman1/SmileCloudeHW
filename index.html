@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triangle Input</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Triangle Angle Display</h1>
+        <p>Enter three 2D points to create a triangle</p>
+        
+        <form id="pointsForm">
+            <div class="point-group">
+                <h3>Point 1</h3>
+                <div class="input-row">
+                    <label>X: <input type="number" id="x1" name="x1" step="any" min="0" max="800" class="coordinate-input" required></label>
+                    <label>Y: <input type="number" id="y1" name="y1" step="any" min="0" max="800" class="coordinate-input" required></label>
+                </div>
+            </div>
+
+            <div class="point-group">
+                <h3>Point 2</h3>
+                <div class="input-row">
+                    <label>X: <input type="number" id="x2" name="x2" step="any" min="0" max="800" class="coordinate-input" required></label>
+                    <label>Y: <input type="number" id="y2" name="y2" step="any" min="0" max="800" class="coordinate-input" required></label>
+                </div>
+            </div>
+
+            <div class="point-group">
+                <h3>Point 3</h3>
+                <div class="input-row">
+                    <label>X: <input type="number" id="x3" name="x3" step="any" min="0" max="800" class="coordinate-input" required></label>
+                    <label>Y: <input type="number" id="y3" name="y3" step="any" min="0" max="800" class="coordinate-input" required></label>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn">Draw Triangle</button>
+        </form>
+    </div>
+
+    <script src="js/input.js"></script>
 </body>
 </html>
