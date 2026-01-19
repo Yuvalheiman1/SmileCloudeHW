@@ -251,7 +251,7 @@ function updateRulers() {
 
 // Draw a small arc at a vertex to mark the angle
 function drawAngleArc(ctx, vertex, p1, p2, angle, scale) {
-    const arcRadius = 30;
+    const arcRadius = 120;
     
     // Calculate start and end angles for the arc
     let startAngle = vectorAngle(vertex, p1);
@@ -281,15 +281,31 @@ function drawAngleArc(ctx, vertex, p1, p2, angle, scale) {
 
 // Draw angle value label
 function drawAngleLabel(ctx, vertex, centroid, angle, scale) {
-    // Position label between vertex and centroid
-    const labelX = vertex.x + (centroid.x - vertex.x) * 0.4;
-    const labelY = vertex.y + (centroid.y - vertex.y) * 0.4;
-
-    ctx.font = `bold ${16 / scale}px Arial`;
-    ctx.fillStyle = '#4CAF50';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(angle.toFixed(1) + '°', labelX, labelY);
+    const arcRadius = 120;
+    const scaledArcRadius = arcRadius * scale;
+    
+    // If arc is too small (heavily zoomed out), place label outside triangle
+    if (scaledArcRadius < 40) {
+        // Position outside the triangle, away from centroid
+        const labelX = vertex.x - (centroid.x - vertex.x) * 0.15;
+        const labelY = vertex.y - (centroid.y - vertex.y) * 0.15;
+        
+        ctx.font = `bold ${12 / scale}px Arial`;
+        ctx.fillStyle = '#4CAF50';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(angle.toFixed(1) + '°', labelX, labelY);
+    } else {
+        // Position inside the arc, closer to the vertex
+        const labelX = vertex.x + (centroid.x - vertex.x) * 0.15;
+        const labelY = vertex.y + (centroid.y - vertex.y) * 0.15;
+        
+        ctx.font = `bold ${14 / scale}px Arial`;
+        ctx.fillStyle = '#4CAF50';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(angle.toFixed(1) + '°', labelX, labelY);
+    }
 }
 
 // Draw a point with label

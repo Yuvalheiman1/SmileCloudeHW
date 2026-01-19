@@ -7,23 +7,27 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Triangle Visualization</h1>
-        <div class="controls">
-            <button class="control-btn" id="zoomInBtn">Zoom In (+)</button>
-            <button class="control-btn" id="zoomOutBtn">Zoom Out (-)</button>
-            <button class="control-btn" id="resetBtn">Reset View</button>
-            <button class="control-btn back-btn" onclick="window.location.href='index.html'">Back to Input</button>
-        </div>
-        <div class="canvas-container">
-            <div class="ruler ruler-horizontal" id="rulerX"></div>
-            <div class="ruler ruler-vertical" id="rulerY"></div>
-            <div class="canvas-wrapper">
-                <canvas id="triangleCanvas" width="800" height="800"></canvas>
+    <div class="page-wrapper">
+        <div class="header">
+            <h1>Triangle Visualization</h1>
+            <div class="controls">
+                <button class="control-btn" id="zoomInBtn">Zoom In</button>
+                <button class="control-btn" id="zoomOutBtn">Zoom Out</button>
+                <button class="control-btn" id="resetBtn">Reset</button>
+                <button class="control-btn back-btn" onclick="window.location.href='index.html'">Back to Input</button>
             </div>
         </div>
-        <div class="instructions">
-            <p>Use mouse wheel to zoom | Click and drag to pan</p>
+        <div class="canvas-section">
+            <div class="canvas-container">
+                <div class="ruler ruler-horizontal" id="rulerX"></div>
+                <div class="ruler ruler-vertical" id="rulerY"></div>
+                <div class="canvas-wrapper">
+                    <canvas id="triangleCanvas" width="800" height="800"></canvas>
+                </div>
+            </div>
+            <div class="instructions">
+                <p>Use mouse wheel to zoom • Click and drag to pan</p>
+            </div>
         </div>
     </div>
 
